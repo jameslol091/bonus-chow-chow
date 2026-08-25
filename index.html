@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1769aa">
+  <title>Bonus Chow Chow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="authView" class="view">
+    <main class="auth-card">
+      <div class="brand">Bonus <span>Chow Chow</span> 🐶</div>
+      <p class="tagline">A friendly community chat.</p>
+
+      <form id="authForm">
+        <input id="email" type="email" autocomplete="email" placeholder="Email" required>
+        <input id="password" type="password" autocomplete="current-password" placeholder="Password" minlength="6" required>
+        <input id="authNickname" type="text" maxlength="30" placeholder="Nickname (sign up only)">
+        <button id="authButton" class="primary" type="submit">Sign in</button>
+      </form>
+
+      <button id="toggleAuth" class="text-button" type="button">Need an account? Sign up</button>
+      <p id="authStatus" class="status"></p>
+    </main>
+  </div>
+
+  <div id="appView" class="view hidden">
+    <header class="topbar">
+      <div class="brand small">Bonus <span>Chow Chow</span> 🐶</div>
+      <div class="top-actions">
+        <span id="currentNickname" class="nickname-pill"></span>
+        <button id="signOut" class="secondary">Sign out</button>
+      </div>
+    </header>
+
+    <main class="app">
+      <section class="chat-card">
+        <div class="chat-title">
+          <div>
+            <h1>Community Chat</h1>
+            <p>Share messages, emojis, photos and links.</p>
+          </div>
+          <span class="online-dot">● Live</span>
+        </div>
+
+        <div id="messages" class="messages" aria-live="polite"></div>
+
+        <form id="messageForm" class="composer">
+          <div class="composer-row">
+            <button id="emojiButton" class="icon-button" type="button" title="Emoji">😀</button>
+            <label class="icon-button" title="Photo">
+              📷
+              <input id="photoInput" type="file" accept="image/*" hidden>
+            </label>
+            <button id="linkButton" class="icon-button" type="button" title="Link">🔗</button>
+            <input id="messageInput" maxlength="2000" autocomplete="off" placeholder="Write a message…" aria-label="Message">
+            <button class="send" type="submit">Send</button>
+          </div>
+          <div id="emojiPanel" class="emoji-panel hidden"></div>
+          <p id="messageStatus" class="status"></p>
+        </form>
+      </section>
+
+      <aside class="side-card">
+        <h2>Community</h2>
+        <p class="muted">Your nickname is shown to other members.</p>
+        <div id="members"></div>
+        <button id="changeNickname" class="secondary full">Change nickname</button>
+      </aside>
+    </main>
+  </div>
+
+  <div id="nicknameModal" class="modal hidden">
+    <div class="modal-card">
+      <h2>Choose your nickname</h2>
+      <p>This is the name people will see in chat.</p>
+      <input id="nicknameInput" maxlength="30" placeholder="Nickname">
+      <button id="saveNickname" class="primary">Save nickname</button>
+      <p id="nicknameStatus" class="status"></p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
